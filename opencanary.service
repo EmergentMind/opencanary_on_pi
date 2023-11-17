@@ -1,0 +1,12 @@
+[Unit]
+Description=OpenCanary Honeypot
+After=syslog.target
+After=network-online.target
+
+[Service]
+User=root
+Restart=always
+ExecStart=/home/pi/env/bin/opencanaryd --dev
+
+[Install]
+WantedBy=multi-user.target
