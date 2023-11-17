@@ -33,7 +33,7 @@ opencanaryd --copyconfig
 # Replace the config with our custom file that was copied to the device during the preparation steps
 # We'll be running the systemd service as root later on so opencanary won't be looking for the config in the pi user's home directory. We do this because there is senstive information in the covnfig and we'll be making it readable only by root
 sudo mv ~/opencanary.conf /etc/opencanaryd/opencanary.conf
-sudo chmod 700 /etc/opencanaryd/opencanary.conf
+sudo chmod 600 /etc/opencanaryd/opencanary.conf
 
 # We want the honeypot to be up after a reboot so lets set up a systemd service
 # the service file that ships with OpenCanary isn't quite what we want to we'll use the one we scped to ~/ instead	
