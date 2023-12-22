@@ -56,13 +56,13 @@ There are numerous ways to do this. The easiest way I've found is to use the Ras
 
 ### Copy the required files to the Raspberry Pi
 
-You'll need you to have the following files onto the device:
+You'll need you to copy the following files onto the device:
 
 - opencanary.init.sh
 - opencanary.conf
 - opencanary.service
 
-To do so you can use scp: `$ scp opencanary.init.sh .opencanary.conf opencanary.service pi@[ip address]:[home pi](/home/pi)`
+To do so you can use scp: `$ scp opencanary.init.sh .opencanary.conf opencanary.service pi@[ip address]:/home/pi`
 
 ## Running the script
 
