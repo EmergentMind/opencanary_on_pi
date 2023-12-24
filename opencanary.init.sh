@@ -18,6 +18,10 @@ sudo apt update -y
 sudo apt install python3-pip python3-dev libffi-dev libssl-dev libjpeg-dev zlib1g-dev libcap2-bin \
 	virtualenv samba git ftp git -y
 
+# Append the samba config to stop loading printers as it can cause false positive alerts
+# See https://github.com/thinkst/opencanary/wiki#im-receiving-alerts-on-port-631-from-127001
+echo "load printers = no" >> /etc/samba/smb.conf
+
 # Create and activate the virtual environment for OpenCanary
 virtualenv env/
 echo "starting virtual environment"
@@ -36,7 +40,7 @@ sudo mv ~/opencanary.conf /etc/opencanaryd/opencanary.conf
 sudo chmod 600 /etc/opencanaryd/opencanary.conf
 
 # We want the honeypot to be up after a reboot so lets set up a systemd service
-# the service file that ships with OpenCanary isn't quite what we want to we'll use the one we scped to ~/ instead	
+# the service file that ships with OpenCanary isn't quite what we want to we'll use the one we scped to ~/ instead
 sudo mv ~/opencanary.service /etc/systemd/system/opencanary.service
 
 # Now we want to enable and start the service
